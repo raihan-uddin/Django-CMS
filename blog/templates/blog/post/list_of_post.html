@@ -4,7 +4,7 @@
 
 {% block content %}
     {% for posts in post %}
-        <h2>{{ posts.title }}</h2>
+        <h2><a href="{{ posts.get_absolute_url }}">{{ posts.title  }}</a></h2>
         <p>Written by {{ posts.author }} on {{ posts.published }}</p>
         <hr>
         {{ posts.content|truncatewords:40|linebreaks }}
