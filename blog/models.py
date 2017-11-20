@@ -6,18 +6,34 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+# Category
+class Category(models.Model):
+    name = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250, unique=True)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
+    def __str__(self):
+        return self.name
+
+
+# Post
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
+    category = models.ForeignKey(Category)
     title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250)
+    slug = models.SlugField(max_length=250, unique=True)
     content = models.TextField()
     seo_title = models.CharField(max_length=250)
     seo_description = models.CharField(max_length=160)
     author = models.ForeignKey(User, related_name='blog_posts')
-    published = models.DateTimeField(default=timezone.now())
+    published = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=9, choices=STATUS_CHOICES, default='draft')
