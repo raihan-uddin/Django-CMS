@@ -1,13 +1,24 @@
 {% extends 'blog/base.html' %}
-
+{% block description %}This is a category description{% endblock %}
 {% block title %}{{ category.name }}{% endblock %}
 
 {% block content %}
-    <h1>{{ category.name }}</h1>
-    {% for posts in post %}
-        <h2><a href="{{ posts.get_absolute_url }}">{{ posts.title  }}</a></h2>
-        <p>Written by {{ posts.author }} on {{ posts.published }}</p>
-        <hr>
-        {{ posts.content|truncatewords:40|linebreaks }}
-    {% endfor %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1>Our Latest Post in {{ category.name }}</h1>
+        </div>
+        {% for posts in post %}
+            <h2><a href="{{ posts.get_absolute_url }}">{{ posts.title  }}</a></h2>
+            <small>Written by {{ posts.author }} on{{ posts.published }} </small>
+            <hr>
+            {{ posts.content|truncatewords:40|linebreaks }}
+        {% endfor %}
+    </div>
+    <div class="col-md-4">
+        <div class="page-header">
+            <h1>Sidebar</h1>
+        </div>
+    </div>
+</div>
 {% endblock %}
