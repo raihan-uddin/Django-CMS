@@ -8,12 +8,13 @@
         <div class="page-header">
             <h1>Our Latest Post</h1>
         </div>
-        {% for posts in post %}
-            <h2><a href="{{ posts.get_absolute_url }}">{{ posts.title  }}</a></h2>
-            <small>Written by {{ posts.author }} on{{ posts.published }}  in <a href="{{ posts.category.get_absolute_url }}">{{ posts.category }}</a> </small>
+        {% for post in posts %}
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.title  }}</a></h2>
+            <small>Written by {{ post.author }} on{{ post.published }}  in <a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a> </small>
             <hr>
-            {{ posts.content|truncatewords:40|linebreaks }}
+            {{ post.content|truncatewords:40|linebreaks }}
         {% endfor %}
+        {% include 'blog/paginator.html' with page=posts %}
     </div>
     <div class="col-md-4">
         <div class="page-header">

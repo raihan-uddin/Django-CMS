@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post, Category
 from .forms import CommentForm
 
@@ -17,8 +18,16 @@ def list_of_post_by_category(request, category_slug):
 
 def list_of_post(request):
     post = Post.objects.filter(status='published')
+    paginator = Paginator(post, 2)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     template = 'blog/post/list_of_post.html'
-    context = {'post': post}
+    context = {'posts': posts, 'page': page}
     return render(request, template, context)
 
 
