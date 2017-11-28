@@ -13,6 +13,16 @@ My aim is learn the basics of building a website using Python and Django framewo
 
 ## Installation
 
+## Urls
+#### FrontEnd User
+> All Post: http://127.0.0.1:8000/blog
+
+> Post Category: http://127.0.0.1:8000/blog/category/categoryname/
+___
+#### Backend Admin
+> All Post: http://127.0.0.1:8000/blog/backend/post/
+
+> Add New Post: http://127.0.0.1:8000/blog/backend/post/new/
 
 ## Admin
 For writing posts we will use django's admin application.
