@@ -11,6 +11,7 @@
                     <th>Author</th>
                     <th>Published</th>
                     <th>Status</th>
+                    <th>Edit Post</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,11 @@
                         <td>{{ post.author }}</td>
                         <td>{{ post.published }}</td>
                         <td>{{ post.status }}</td>
+                        <td>
+                            <a href="{% url 'blog:edit_post' slug=post.slug %}">
+                                <button type="button" class="btn btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                            </a>
+                        </td>
                     </tr>
                 {% else %}
                     <tr>
@@ -30,6 +36,11 @@
                         <td>{{ post.author }}</td>
                         <td>{{ post.published }}</td>
                         <td>{{ post.status }}</td>
+                        <td>
+                            <a href="{% url 'blog:edit_post' slug=post.slug %}">
+                                <button type="button" class="btn btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                            </a>
+                        </td>
                     </tr>
                 {% endif %}
             {% endfor %}
