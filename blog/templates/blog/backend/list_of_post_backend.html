@@ -12,6 +12,7 @@
                     <th>Published</th>
                     <th>Status</th>
                     <th>Edit Post</th>
+                    <th>Delete Post</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +26,12 @@
                         <td>{{ post.status }}</td>
                         <td>
                             <a href="{% url 'blog:edit_post' slug=post.slug %}">
-                                <button type="button" class="btn btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                                <button type="button" class="btn btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'blog:delete_post' slug=post.slug %}">
+                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</button>
                             </a>
                         </td>
                     </tr>
@@ -38,7 +44,12 @@
                         <td>{{ post.status }}</td>
                         <td>
                             <a href="{% url 'blog:edit_post' slug=post.slug %}">
-                                <button type="button" class="btn btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                                <button type="button" class="btn btn-secondary"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'blog:delete_post' slug=post.slug %}">
+                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</button>
                             </a>
                         </td>
                     </tr>
